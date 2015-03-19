@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Brewed Coffees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brewed_coffees.each do |brewed_coffee| %>
+      <tr>
+        <td><%= brewed_coffee.name %></td>
+        <td><%= link_to 'Show', brewed_coffee %></td>
+        <td><%= link_to 'Edit', edit_brewed_coffee_path(brewed_coffee) %></td>
+        <td><%= link_to 'Destroy', brewed_coffee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Brewed coffee', new_brewed_coffee_path %>
+
+<%= javascript_tag do %>
+  var brewedCoffee = new BrewedCoffee();
+  brewedCoffee.initialize({el: $('table')});
+  brewedCoffee.render()
+<% end %>
